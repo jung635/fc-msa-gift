@@ -2,6 +2,7 @@ package dev.practice.gift.domain.gift;
 
 import dev.practice.gift.common.exception.InvalidParamException;
 import dev.practice.gift.common.util.TokenGenerator;
+import dev.practice.gift.domain.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.time.ZonedDateTime;
 @ToString
 @Getter
 @Table(name = "gifts")
-public class Gift {
+public class Gift extends AbstractEntity {
 
     private static final String GIFT_PREFIX = "gt_";
 
