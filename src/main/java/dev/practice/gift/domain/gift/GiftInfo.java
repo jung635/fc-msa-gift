@@ -16,7 +16,7 @@ public class GiftInfo {
         this.giftToken = gift.getGiftToken();
         this.pushType = gift.getPushType();
         this.giftReceiverName = gift.getGiftReceiverName();
-        this.giftReceiverPhone = gift.getGiftReceiverName();
+        this.giftReceiverPhone = gift.getGiftReceiverPhone();
         this.giftMessage = gift.getGiftMessage();
     }
 }
