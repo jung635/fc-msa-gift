@@ -1,12 +1,10 @@
 package dev.practice.gift.domain.gift;
 
+import dev.practice.gift.common.exception.IllegalStatusException;
 import dev.practice.gift.common.exception.InvalidParamException;
 import dev.practice.gift.common.util.TokenGenerator;
 import dev.practice.gift.domain.AbstractEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
@@ -15,6 +13,7 @@ import java.time.ZonedDateTime;
 @Entity
 @ToString
 @Getter
+@NoArgsConstructor
 @Table(name = "gifts")
 public class Gift extends AbstractEntity {
 
@@ -97,5 +96,22 @@ public class Gift extends AbstractEntity {
         this.giftReceiverPhone = giftReceiverPhone;
         this.giftMessage = giftMessage;
         this.expiredAt = ZonedDateTime.now().plusDays(7);
+    }
+
+    public void inPayment() {
+        if (this.status != Status.INIT) throw new IllegalStatusException("Gift inPayment");
+        this.status = Status.IN_PAYMENT;
+    }
+
+    public void completePayment() {
+        if (this.status != Status.IN_PAYMENT) throw new IllegalStatusException("Gift paymentComplete");
+        this.status = Status.ORDER_COMPLETE;
+        this.paidAt = ZonedDateTime.now();
+    }
+
+    public void pushLink() {
+        if (this.status != Status.ORDER_COMPLETE) throw new IllegalStatusException("Gift pushLink");
+        this.status = Status.PUSH_COMPLETE;
+        this.pushedAt = ZonedDateTime.now();
     }
 }

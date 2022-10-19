@@ -4,4 +4,6 @@ import dev.practice.gift.domain.gift.Gift;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GiftRepository extends JpaRepository<Gift, Long> {
+    Gift findByGiftToken(String giftToken);
+    Gift findByOrderToken(String orderToken);
 }
