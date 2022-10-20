@@ -52,4 +52,15 @@ public class GiftServiceImpl implements GiftService{
         //결제 상태 변경
         gift.completePayment();
     }
+
+    @Override
+    @Transactional
+    public void acceptGift(GiftCommand.Accept request) {
+        //Gift 객체 생성
+        Gift gift = giftReader.getGiftByGiftToken(request.getGiftToken());
+        //주소 데이터 객체에 입력
+        gift.accept(request);
+        //주소 입력 API 실행
+        orderApiCaller.updateReceiverInfo(gift.getOrderToken(), request);
+    }
 }

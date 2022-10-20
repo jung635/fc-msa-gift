@@ -77,4 +77,26 @@ public class GiftDto {
             this.giftToken = giftInfo.getGiftToken();
         }
     }
+
+    @Getter
+    @Setter
+    public static class AcceptGiftReq {
+        @NotBlank(message = "receiverName 는 필수값입니다")
+        private String receiverName;
+
+        @NotBlank(message = "receiverPhone 는 필수값입니다")
+        private String receiverPhone;
+
+        @NotBlank(message = "receiverZipcode 는 필수값입니다")
+        private String receiverZipcode;
+
+        @NotBlank(message = "receiverAddress1 는 필수값입니다")
+        private String receiverAddress1;
+
+        @NotBlank(message = "receiverAddress2 는 필수값입니다")
+        private String receiverAddress2;
+
+        @NotBlank(message = "etcMessage 는 필수값입니다")
+        private String etcMessage;
+    }
 }

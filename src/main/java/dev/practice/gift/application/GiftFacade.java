@@ -31,4 +31,8 @@ public class GiftFacade {
     public void completePayment(String orderToken) {
         giftService.completePayment(orderToken);
     }
+
+    public void acceptGift(GiftCommand.Accept request) {
+        giftService.acceptGift(request);
+    }
 }
