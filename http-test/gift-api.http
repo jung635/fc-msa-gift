@@ -1,20 +1,20 @@
 ### 선물하기 등록
-POST http://localhost:18080/api/v1/gifts/
+POST http://localhost:18080/api/v1/gifts/register
 Content-Type: application/json
 
 {
-  "buyerUserId": "12345",
-  "payMethod": "TOSS_PAY",
+  "buyerUserId": "6",
+  "payMethod": "CARD",
   "pushType": "KAKAO",
-  "giftReceiverName": "이기쁨",
+  "giftReceiverName": "정가지",
   "giftReceiverPhone": "01000001111",
-  "giftMessage": "기쁨아 사랑해",
+  "giftMessage": "축하한다 가지야~",
   "orderItemList": [
     {
-      "orderCount": 1,
-      "itemToken": "itm_Ni4xehFRo2QdlAsv",
-      "itemName": "티셔츠",
-      "itemPrice": "30000",
+      "orderCount": 2,
+      "itemToken": "item_yuAzfZSNySTHIZRwRYxe",
+      "itemName": "원피스",
+      "itemPrice": "50000",
       "orderItemOptionGroupList": [
         {
           "ordering": 1,
@@ -33,8 +33,8 @@ Content-Type: application/json
           "orderItemOptionList": [
             {
               "ordering": 1,
-              "itemOptionName": "GOLD",
-              "itemOptionPrice": 1000
+              "itemOptionName": "RED",
+              "itemOptionPrice": 0
             }
           ]
         }
@@ -42,29 +42,18 @@ Content-Type: application/json
     },
     {
       "orderCount": 1,
-      "itemToken": "itm_AAGf16M3LuqiTOOv",
-      "itemName": "양말",
-      "itemPrice": "10000",
+      "itemToken": "item_VxQylTtlXEPvewrUhkpr",
+      "itemName": "목걸이",
+      "itemPrice": "70000",
       "orderItemOptionGroupList": [
         {
           "ordering": 1,
-          "itemOptionGroupName": "사이즈",
+          "itemOptionGroupName": "종류",
           "orderItemOptionList": [
             {
               "ordering": 1,
-              "itemOptionName": "LARGE",
-              "itemOptionPrice": 0
-            }
-          ]
-        },
-        {
-          "ordering": 2,
-          "itemOptionGroupName": "컬러",
-          "orderItemOptionList": [
-            {
-              "ordering": 1,
-              "itemOptionName": "RED",
-              "itemOptionPrice": 0
+              "itemOptionName": "GOLD",
+              "itemOptionPrice": 10000
             }
           ]
         }
@@ -74,22 +63,22 @@ Content-Type: application/json
 }
 
 ### 선물하기 결제중 상태로 변경
-POST http://localhost:18080/api/v1/gifts/gt_1mF8Py1k0yrnDSP85/payment-processing
+POST http://localhost:18080/api/v1/gifts/gt_OzJZCQheAJYVxXQWkriB/payment-processing
 Content-Type: application/json
 
 ### 선물하기 수락 상태로 변경
-POST http://localhost:18080/api/v1/gifts/gt_1mF8Py1k0yrnDSP85/accept-gift
+POST http://localhost:18080/api/v1/gifts/gt_OzJZCQheAJYVxXQWkriB/accept-gift
 Content-Type: application/json
 
 {
-  "receiverName": "그렉",
+  "receiverName": "정가지",
   "receiverPhone": "01000001111",
   "receiverZipcode": "123123",
-  "receiverAddress1": "서울시 강동구",
-  "receiverAddress2": "우리집",
+  "receiverAddress1": "서울시 송파구",
+  "receiverAddress2": "가지의 집",
   "etcMessage": "감사합니다!"
 }
 
 ### 선물하기 조회
-GET http://localhost:18080/api/v1/gifts/gt_PoN5w7udsGLS7l1qk
+GET http://localhost:18080/api/v1/gifts/gt_OzJZCQheAJYVxXQWkriB
 Content-Type: application/json

@@ -30,6 +30,7 @@ public class GiftServiceImpl implements GiftService{
     }
 
     @Override
+    @Transactional
     public GiftInfo getGiftInfo(String giftToken) {
         Gift gift = giftReader.getGiftByGiftToken(giftToken);
         return new GiftInfo(gift);
@@ -51,6 +52,8 @@ public class GiftServiceImpl implements GiftService{
         Gift gift = giftReader.getGiftByOrderToken(orderToken);
         //결제 상태 변경
         gift.completePayment();
+        //푸시
+        gift.pushLink();
     }
 
     @Override
